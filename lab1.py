@@ -4,23 +4,23 @@ import cv2
 
 print('Lab1. OpenCV version: ' + cv2.__version__)
 
-# завантажуємо файл як кольорове зображення і як сіре зображення
+# upload the file as a colour image and as a grey image
 img = cv2.imread('daenerys.jpg')
 img_gray = cv2.imread('daenerys.jpg', 0)
 
 cv2.imshow(' Raw image ', img)
-# закриваються всі вікна після натискання довільної клавіші
+# closes all windows after pressing an arbitrary key
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-# збереження зображення в файл
+# saving the image to a file
 cv2.imwrite('daenerys-1.jpg', img)
 
-# вивід розміру зображення
+# output the image size
 (h, w, d) = img.shape  #
 print(' width ={}, height ={}, depth ={}'.format(w, h, d))
 
-# доступ до RGB пікселя з координатами x=50 , y=100
+# access to RGB pixel with coordinates x=50, y=100
 (B, G, R) = img[100, 50]
 print('R={}, G={}, B={}'.format(R, G, B))
 
@@ -38,17 +38,17 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 # resize the image to 800x450px, saving aspect ratio
-h, w = img.shape[0:2]  # висота і ширина оригінального зображення
-h_new = 450  # висота нового зображення
-ratio = w / h  # відношення ширини до висоти
-w_new = int(h_new * ratio)  # ширина нового зображення
-resized = cv2.resize(img, (w_new, h_new))  # зміна розміру оригінального зображення
+h, w = img.shape[0:2]  # height and width of the original image
+h_new = 450  # height of the new image
+ratio = w / h  # width to height ratio
+w_new = int(h_new * ratio)  # width of the new image
+resized = cv2.resize(img, (w_new, h_new))  # resize the original image
 print(resized.shape)
 cv2.imshow(' Fixed Resizing ', resized)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-# поворот зображення на 45 градусів
+# rotate the image by 45 degrees
 rotated = imutils.rotate(img, -45)
 cv2.imshow(' Imutils Rotation ', rotated)
 cv2.waitKey(0)
